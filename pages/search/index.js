@@ -7,24 +7,8 @@ import SearchBar from '@/components/searchbar';
 import PetCard from '@/components/card';
 import SearchFilter from '@/components/searchfilter';
 
-// //pretend search results
-// function searchResults() {
-//     const pets = petData.map(pet =>
-//       <li key={pet.id}>
-//         <PetCard
-//         id={pet.id} 
-//         imageURL={pet.imageURL} 
-//         imageAlt={pet.imageAlt}
-//         name={pet.name}
-//         gender={pet.gender}
-//         age={pet.age}
-//         distance={2}/>
-//       </li>
-//     );
-//     return <ul className="card-grid">{pets}</ul>;
-//   }
+export default function SearchResults ({ response }) {
 
-export default function SearchResults () {
     return (
 
         <Container className="page-wrapper">
@@ -40,10 +24,33 @@ export default function SearchResults () {
 
                 {/* || Results grid */}
                 <Col md={10}>
-                    <p>search results</p>
+                    <ul className="card-grid">
+                        {response.data.map((pet,index) => (
+                            <li key={index}>
+                                <PetCard
+                                id={pet.id} 
+                                imageURL={pet.imageURL} 
+                                imageAlt="alt text goes here"
+                                name={pet.name}
+                                gender={pet.gender}
+                                age={pet.age}
+                                distance={2}/>
+                            </li>
+                        ))}
+                    </ul>
                 </Col>
             </Row>
         </Container>
 
     );
 }
+
+export async function getServerSideProps(context) {
+    const query = await fetch(`${process.env.BASE_URL}/api/listPets`);
+    const response = await query.json();
+    return {
+      props: {
+        response,
+      },
+    };
+  }
