@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Header () {
     return (
         <header>
-            <div id="skip"><a href="#content">Skip to Main Content</a></div>
+            <div id="skip"><Link href="#content">Skip to Main Content</Link></div>
             <h2><Link href="/" title="Home page"><Image src="/logo.svg" width={54} height={54} alt="Pawfinder home"/></Link></h2>
             <nav>
                 <ul>

@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Footer () {
     return (
         <footer>
-            <Link href="/app" title="Home page"><Image src="/logo_inverted.svg" width={54} height={54} alt="Pawfinder footer"/></Link>
+            <Link href="/" title="Home page"><Image src="/logo_inverted.svg" width={54} height={54} alt="Pawfinder footer"/></Link>
             <nav>
                 <ul>
                     <li><Link href="/">Home</Link></li>
