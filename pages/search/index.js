@@ -28,7 +28,7 @@ export default function SearchResults ({ response }) {
                         {response.data.map((pet,index) => (
                             <li key={index}>
                                 <PetCard
-                                id={pet.id} 
+                                id={pet._id} 
                                 imageURL={pet.imageURL} 
                                 imageAlt="alt text goes here"
                                 name={pet.name}

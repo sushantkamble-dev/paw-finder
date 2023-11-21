@@ -23,7 +23,7 @@ function PetCard(props) {
         </Card.Text>
         <div style={{display: "flex"}}>
           <Button variant="outline-primary" onClick={handleFavorite}>{favorite ? "Unfavorite" : "Favorite"}</Button>
-          <Button variant="primary" href={`/pets/${props.id}`}>View</Button>
+          <Button variant="primary" href={`/petDetails/${props.id}`}>View</Button>
         </div>
       </Card.Body>
     </Card>
