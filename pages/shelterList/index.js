@@ -5,9 +5,11 @@ const shelterList = ({ response }) => {
   console.log(response);
   return (
     <div>
-      <ul>test</ul>
       {response.data.map((item,index) => (
+        <>
+        <img src={item.imageURL} height={500} width={500}></img>
         <h2 key={index}>{item.name}</h2>
+        </>
       ))}
     </div>
   );
