@@ -1,7 +1,7 @@
 // import PetCard from "../components/card";
 // import Container from 'react-bootstrap/Container';
-// import SearchBar from "@/components/searchbar";
-// import QuizBanner from "@/components/quizbanner";
+import SearchBar from "@/components/searchbar";
+import QuizBanner from "@/components/quizbanner";
 
 export default function Home() {
 
@@ -12,11 +12,11 @@ export default function Home() {
         Adopt a paw buddy!</p>
         <div className="search-section">
           <h1>Find your furry friend today!</h1>
-          {/* <SearchBar/> */}
+          <SearchBar/>
         </div>
       </section>
       <section style={{display: "flex", flexDirection: "column"}}>
-        {/* <QuizBanner/> */}
+        <QuizBanner/>
       </section>
       <section className="near-you">
         <div>
