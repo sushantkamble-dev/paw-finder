@@ -16,7 +16,7 @@ const shelterList = ({ response }) => {
 export default shelterList;
 
 export async function getServerSideProps(context) {
-  const query = await fetch("http://localhost:3000/api/listShelters");
+  const query = await fetch(`${process.env.BASE_URL}/api/listShelters`);
   const response = await query.json();
   return {
     props: {
