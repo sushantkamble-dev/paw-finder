@@ -7,8 +7,7 @@ import SearchBar from '@/components/searchbar';
 import PetCard from '@/components/card';
 import SearchFilter from '@/components/searchfilter';
 
-export default function SearchResults ({ response }) {
-
+export default function SearchResults ({response}) {
     return (
 
         <Container className="page-wrapper">
@@ -46,7 +45,8 @@ export default function SearchResults ({ response }) {
 }
 
 export async function getServerSideProps(context) {
-    const query = await fetch(`${process.env.BASE_URL}/api/listPets`);
+    let params = new URLSearchParams(context.query);
+    const query = await fetch(`${process.env.BASE_URL}/api/listPets?${params}`);
     const response = await query.json();
     return {
       props: {
