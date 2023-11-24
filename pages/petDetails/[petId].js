@@ -14,13 +14,13 @@ const PetDetails = ({ response }) => {
     }
 
     // check for response
-    console.log(response)
+    //console.log(response)
     if(!response.data){
         return(<><h1>Details not found for this pet</h1></>)
     }
 
   // if successful:
-  console.log(response.data)
+  //console.log(response.data)
   return (
     <>
       {/* Photo viewer */}
