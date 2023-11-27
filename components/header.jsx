@@ -1,7 +1,18 @@
+import { getIronSession } from "iron-session";
+import { ironOptions } from "@/lib/config/iron-config";
 import Image from "next/image";
 import Link from "next/link";
 
+async function checkSession(context) {
+    const session = await getIronSession(context.req, context.res, ironOptions);
+    return session;
+}
+
 export default function Header () {
+
+    // const sessionCheck = checkSession();
+    // console.log(sessionCheck);
+
     return (
         <header>
             <div id="skip"><Link href="#content">Skip to Main Content</Link></div>
@@ -10,9 +21,9 @@ export default function Header () {
                 <ul>
                     <li><Link href="/" alt="header_home">Home</Link></li>
                     <li><Link href="/search">Search</Link></li>
-                    {/* <li><Link href="/about">About Us</Link></li> */}
                 </ul>
                 <ul>
+                    <li><Link href="/profile">Profile</Link></li>
                     <li><Link href="/login">Log In</Link></li>
                     <li><Link href="/signup">Sign Up</Link></li>
                 </ul>
