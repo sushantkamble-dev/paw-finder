@@ -22,7 +22,7 @@ function PetCard(props) {
           {props.distance} mi from you
         </Card.Text>
         <div style={{display: "flex"}}>
-          <Button variant="outline-primary" onClick={handleFavorite}>{favorite ? "Unfavorite" : "Favorite"}</Button>
+          {/* <Button variant="outline-primary" onClick={handleFavorite}>{favorite ? "Unfavorite" : "Favorite"}</Button> */}
           <Button variant="primary" href={`/petDetails/${props.id}`}>View</Button>
         </div>
       </Card.Body>
