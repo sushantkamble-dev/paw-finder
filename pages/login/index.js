@@ -1,14 +1,13 @@
 import { useState } from 'react';
-//import { useNavigate } from "react-router";
 import Button from 'react-bootstrap/Button';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 export default function Login() {
 
-  const [email, setEmail] = useState("")
+  const router = useRouter();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  //const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,11 +18,11 @@ export default function Login() {
     });
     if (response.ok) {
       const user = await response.json();
-      console.log("login successful!");
-      console.log(user);
+      window.alert(`Welcome back, ${user.user.firstName}!`);
+      router.push("/");
     } else {
-      console.log("login failed :(");
-      console.log(response.json());
+      const errorMsg = await response.json();
+      window.alert(`Login failed: ${errorMsg.error}!`);
     }
   }
 

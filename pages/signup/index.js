@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 export default function Signup() {
+
+  const router = useRouter();
 
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("");
@@ -18,9 +21,12 @@ export default function Signup() {
     });
     if (response.ok) {
       const user = await response.json();
-      console.log("user created!");
+      console.log(user);
+      window.alert(`Account created! Please log in.`);
+      router.push("/login");
     } else {
-      console.log("user not created :(");
+      const errorMsg = await response.json();
+      window.alert(`Signup failed: ${errorMsg.error}!`);
     }
   }
 
