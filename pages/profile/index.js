@@ -5,23 +5,21 @@ import { Button, Form } from "react-bootstrap";
 
 export default function Profile ({session}) {
 
-    if (session.isLoggedIn) {
+    const [form, setForm] = useState({
+        firstName: "",
+        lastName: "",
+        emailId: "",
+        address: "",
+        zipcode: "",
+    });
 
-        console.log(session);
-
-        const [form, setForm] = useState({
-            firstName: session.user.firstName,
-            lastName: session.user.lastName,
-            emailId: session.user.emailId,
-            address: session.user.address,
-            zipcode: session.user.zipcode,
+    function updateForm(value) {
+        return setForm((prev) => {
+          return { ...prev, ...value };
         });
+    }
 
-        function updateForm(value) {
-            return setForm((prev) => {
-              return { ...prev, ...value };
-            });
-        }
+    if (session.isLoggedIn) {
 
         return (
             <div className="container-fluid">

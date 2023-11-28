@@ -42,7 +42,7 @@ export default function Login() {
                       <input type="password" className="form-control" id="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} required/>
                     </div>
                     <Button type="submit" id="btn" className="btn btn-primary form-control mb-3">Log In</Button>
-                      <p id="signup-link">Don't have an account? <Link href="/signup">Sign Up</Link> here</p>
+                      <p id="signup-link">Don&apos;t have an account? <Link href="/signup">Sign Up</Link> here</p>
                 </form>
             </div>
         </div>
