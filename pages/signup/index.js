@@ -11,13 +11,15 @@ export default function Signup() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipcode, setZipcode] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
     const response = await fetch(`/api/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ firstName, lastName, email, password })
+      body: JSON.stringify({ firstName, lastName, email, password, address, zipcode })
     });
     if (response.ok) {
       const user = await response.json();
@@ -52,11 +54,21 @@ export default function Signup() {
                     <input type="email" className="form-control" name="email" id="email"  placeholder="jdoe@email.com" onChange={e => setEmail(e.target.value)} required/>
                     <span className="error_form" id="email_error_message"></span>
                   </div>
-                  <div className="form-group mb-3">
+                  <div className="form-group mb-2">
                     <label htmlFor="password">Password <sup>*</sup></label>
                     <input type="password" className="form-control" id="password" name="password" placeholder="Password" onChange={e => setPassword(e.target.value)} required/>
                     <span className="error_form" id="password_error_message"></span>
-                    </div>
+                  </div>
+                  <div className="form-group mb-2">
+                    <label htmlFor="address">Address <sup>*</sup></label>
+                    <input type="text" className="form-control" id="address" name="address" placeholder="123 Main St" onChange={e => setAddress(e.target.value)} required/>
+                    <span className="error_form" id="password_error_message"></span>
+                  </div>
+                  <div className="form-group mb-3">
+                    <label htmlFor="zipcode">ZIP Code <sup>*</sup></label>
+                    <input type="zipcode" className="form-control" id="zipcode" name="zipcode" placeholder="78701" onChange={e => setZipcode(e.target.value)} required/>
+                    <span className="error_form" id="password_error_message"></span>
+                  </div>
                     <Button type="submit" id="btn" className="btn btn-primary form-control mb-3">Submit</Button>
                     <p id="login-link">Already have an account? <Link id="logInLink" href="/login">Log in</Link> here</p>
                   </form>

@@ -1,12 +1,11 @@
-//import { updateQuiz } from "@/lib/users/update";
+import { updateQuiz } from "@/lib/users/update";
 
 export default async (req, res) => {
     try {
-      const { quiz, id } = req.body;
-      //const { results, err } = await updateQuiz(quiz, id);
-      const results = req.body;
-      console.log(quiz);
-      console.log(id);
+      const id = req.body.id;
+      const quiz = req.body;
+      delete quiz.id;
+      const { results, err } = await updateQuiz(quiz, id);
       if (err) throw new Error(err);
       res.setHeader("Content-Type", "application/json");
       return res.status(200).json({data: results});

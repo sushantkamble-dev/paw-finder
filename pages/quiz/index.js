@@ -5,7 +5,10 @@ import Button from 'react-bootstrap/Button';
 
 export default function Quiz ({session}) {
 
-    const [quiz, setQuiz] = useState({
+    // handling defaults
+
+    let defaults = {
+        id: "",
         q1: "cat",
         q2: "myself",
         q3: "first time",
@@ -17,6 +20,35 @@ export default function Quiz ({session}) {
         q9: "must be",
         q10: "open",
         q11: "persian",
+    }
+
+    // update defaults if user is logged in and they already exist
+
+    if (session.user) {
+        // save user id
+        defaults.id = session.user._id
+        // iterate over user's existing survey answers
+        for (const [key, value] of Object.entries(session.user.surveyAnswers)) {
+            // if they already have a saved answer, put it in the field, otherwise use the default
+            if (key, value) {
+                defaults[key] = value;
+            }
+        }
+    }
+
+    const [quiz, setQuiz] = useState({
+        id: defaults.id,
+        q1: defaults.q1,
+        q2: defaults.q2,
+        q3: defaults.q3,
+        q4: defaults.q4,
+        q5: defaults.q5,
+        q6: defaults.q6,
+        q7: defaults.q7,
+        q8: defaults.q8,
+        q9: defaults.q9,
+        q10: defaults.q10,
+        q11: defaults.q11
     });
 
     function updateQuiz(value) {
@@ -25,25 +57,24 @@ export default function Quiz ({session}) {
         });
     }
     
-    if (session.isLoggedIn) {
-
-        // // check for existing quiz answers
-        // if (session.user.surveyAnswers.q1) {
-
-        // }
-
-        async function handleSubmit(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const formJson = Object.fromEntries(formData.entries());
-            // const response = await fetch(`/api/auth/updateQuiz`, {
-            //     method: "POST",
-            //     headers: { "Content-Type": "application/json" },
-            //     body: JSON.stringify({quiz: formJson, id: session.user._id})
-            //   });
-            // const data = await response.json();
-            console.log(formJson);
+    async function handleSubmit(e) {
+        e.preventDefault();
+        const response = await fetch(`/api/auth/updateQuiz`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(quiz)
+        });
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result);
+            window.alert("Changes saved!");
+        } else {
+            const errorMsg = await response.json();
+            window.alert(`Update failed: ${errorMsg.error}!`);
         }
+    }
+
+    if (session.isLoggedIn) {
 
         return(
             <form className="form-container mt-5 mb-5" onSubmit={handleSubmit}>
