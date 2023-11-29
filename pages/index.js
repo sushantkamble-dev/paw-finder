@@ -42,7 +42,7 @@ export default function Home({ response }) {
           <br />
           Adopt a paw buddy!
         </p>
-        <div className="search-section">
+        <div className="search-section" id="mainContent">
           <h1>Find your furry friend today!</h1>
           <SearchBar />
         </div>

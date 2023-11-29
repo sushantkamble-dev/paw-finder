@@ -15,7 +15,7 @@ export default function Header () {
 
     return (
         <header>
-            <div id="skip"><Link href="#content">Skip to Main Content</Link></div>
+            <div id="skip"><Link href="#mainContent">Skip to Main Content</Link></div>
             <h2><Link href="/" title="Home page"><Image src="/logo.svg" width={54} height={54} alt="Pawfinder home"/></Link></h2>
             <nav>
                 <ul>
