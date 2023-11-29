@@ -5,12 +5,12 @@ const filters = [
     {
         id: "sortby",
         label: "Sort By",
-        options: ["Any"]
+        options: ["Any","Ascending","Descending"]
     },
     {
         id: "breed",
         label: "Breed",
-        options: ["Any", "Golden Retriever"]
+        options: ["Any", "Labrador Retriever","German Shepherd", "Beagle"]
     },
     {
         id: "age",

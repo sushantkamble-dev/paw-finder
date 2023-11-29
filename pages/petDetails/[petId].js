@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 const PetDetails = ({ response }) => {
-
+    console.log("response",response.data.shelter)
     //stuff for favorites
     const [favorite, setFavorite] = useState(false);
 
@@ -41,18 +41,16 @@ const PetDetails = ({ response }) => {
             <div className="about">
             <div className="text-wrapper">About</div>
             <div className="details">
+                <div className="div">Description</div>
+                <div className="text-wrapper-2">{response.data.description} years</div>
+            </div>
+            <div className="details">
                 <div className="div">Age</div>
                 <div className="text-wrapper-2">{response.data.age} years</div>
             </div>
             <div className="details">
                 <div className="div">Gender</div>
                 <div className="text-wrapper-2">{response.data.gender}</div>
-            </div>
-            <div className="details">
-                <div className="div">Characteristics</div>
-                <ul className="text-wrapper-2" style={{marginBottom: 0}}>{response.data.characteristics.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}</ul>
             </div>
             <div className="details">
                 <div className="div">Color</div>
@@ -62,45 +60,29 @@ const PetDetails = ({ response }) => {
                 <div className="div">Coat length</div>
                 <div className="text-wrapper-2">{response.data.coatLength}</div>
             </div>
-            <div className="details">
-                <div className="div">Health</div>
-                <div className="text-wrapper-2">{response.data.health}</div>
-            </div>
-            <div className="details">
-                <div className="div">House-trained</div>
-                <div className="text-wrapper-2">{response.data.houseTrained ? "Yes" : "No"}</div>
-            </div>
-            <div className="details">
-                <div className="div">Good in a home with</div>
-                <ul className="text-wrapper-2" style={{marginBottom: 0}}>{response.data.compatibleWith.map((item, index) => (
-                    <li key={index}>{item}</li>
-                ))}</ul>
-            </div>
+
             <div className="details">
                 <div className="div">Adoption fee</div>
-                <div className="text-wrapper-2">{response.data.AdoptionFee}</div>
+                <div className="text-wrapper-2">{response.data.adoptionFee}</div>
             </div>
             </div>
         </div>
         <div className="shelter-adopt">
-            <div className="adopt">
-            <div className="text-wrapper-3">Interested in adopting {response.data.name}?</div>
-            <Button className="favorite" size="lg" href="mailto:email@email.com">Send an inquiry</Button>
-            <Button className="favorite" size="lg" variant="outline-primary" onClick={handleFavorite}>{favorite ? "Unfavorite" : "Favorite"}</Button>
-            </div>
+
             <div className="shelter">
             <div className="name-map">
-                <div className="text-wrapper-6">UT Animal Rescue</div>
-                <img className="rectangle" src="https://i.pinimg.com/originals/97/19/9c/97199cdda2fec20471eb88c8da150220.jpg" />
+                <div className="text-wrapper-6">{response.data.shelter.name}</div>
+                <img className="rectangle" src={response.data.shelter.imageURL} />
             </div>
             <div className="details-2">
                 <div className="div">Location</div>
-                <p className="element-guadalupe-st">1616 Guadalupe St.<br />Austin, TX 78701</p>
+                <p className="element-guadalupe-st">{response.data.shelter.Location}</p>
             </div>
             <div className="details-2">
                 <div className="div">Contact</div>
-                <a className="text-wrapper-2" href="mailto:email@email.com">email@email.com</a>
+                <a className="text-wrapper-2" href="mailto:email@email.com">{response.data.shelter.emailId}</a>
             </div>
+            <Button className="favorite" size="lg" href={`mailto:${response.data.shelter.emailId}?subject=${'Adoption request for '+ response.data.shelter.name}&body=${'Hi, I would like to adopt '+ response.data.shelter.name}`}>Send an inquiry</Button>
             </div>
         </div>
         </div>

@@ -8,6 +8,7 @@ import PetCard from '@/components/card';
 import SearchFilter from '@/components/searchfilter';
 
 export default function SearchResults ({response}) {
+    console.log("response:",response)
     return (
 
         <Container className="page-wrapper">
@@ -24,7 +25,7 @@ export default function SearchResults ({response}) {
                 {/* || Results grid */}
                 <Col md={10}>
                     <ul className="card-grid">
-                        {response.data.map((pet,index) => (
+                        {response.data?response.data.map((pet,index) => (
                             <li key={index}>
                                 <PetCard
                                 id={pet._id} 
@@ -33,9 +34,11 @@ export default function SearchResults ({response}) {
                                 name={pet.name}
                                 gender={pet.gender}
                                 age={pet.age}
-                                distance={2}/>
+                                distance={2}
+                                breed = {pet.breed}
+                                />
                             </li>
-                        ))}
+                        )):<p>Pets not found</p>}
                     </ul>
                 </Col>
             </Row>
@@ -46,6 +49,7 @@ export default function SearchResults ({response}) {
 
 export async function getServerSideProps(context) {
     let params = new URLSearchParams(context.query);
+    console.log(params)
     const query = await fetch(`${process.env.BASE_URL}/api/listPets?${params}`);
     const response = await query.json();
     return {

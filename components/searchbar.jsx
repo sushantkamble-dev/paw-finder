@@ -42,7 +42,7 @@ export default function SearchBar() {
                 <Form.Group as={Col} xs={7} controlId="location">
                     <Form.Label>Enter city/zip</Form.Label>
                     <Form.Control
-                    name="location"
+                    name="city"
                     type="search"
                     placeholder="e.g., 78701 or Austin, TX"
                     value={location}

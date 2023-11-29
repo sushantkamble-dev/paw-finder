@@ -7,7 +7,7 @@ export default function Quiz () {
     <h2>Tell us a bit about yourself</h2>
 
     <div className="form-question">
-        <span className="quiz-span">I'd like to adopt a</span>
+        <span className="quiz-span">{"I'd like to adopt a"}</span>
         <select className="quiz-select">
             <option>Cat</option>
             <option>Dog</option>
@@ -23,7 +23,7 @@ export default function Quiz () {
     </div>
     
     <div className="form-question">
-        <span className="quiz-span">I am a(n)</span>
+        <span className="quiz-span">{"I am a(n)"}</span>
         <select className="quiz-select">
             <option>First Time</option>
             <option>Experienced</option>
@@ -82,7 +82,7 @@ export default function Quiz () {
         <span className="quiz-span">My pet</span>
         <select className="quiz-select">
             <option>must be</option>
-            <option>doesn't have to be</option>
+            <option>{"doesn't have to be"}</option>
         </select>
         house/litter box trained
     </div>
