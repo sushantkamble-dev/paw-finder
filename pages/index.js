@@ -1,9 +1,9 @@
-// import PetCard from "../components/card";
+import PetCard from "../components/card";
 // import Container from 'react-bootstrap/Container';
 import SearchBar from "@/components/searchbar";
 import QuizBanner from "@/components/quizbanner";
 
-export default function Home() {
+export default function Home({response}) {
 
   return (
     <div>
@@ -20,10 +20,38 @@ export default function Home() {
       </section>
       <section className="near-you">
         <div>
-          <h2>Dogs near you</h2>
+          <h2>Featured Dogs</h2>
+          <ul className="card-grid">
+            {response.dogs.data.map((pet,index) => (
+                <li key={index}>
+                    <PetCard
+                    id={pet._id} 
+                    imageURL={pet.imageURL} 
+                    imageAlt="alt text goes here"
+                    name={pet.name}
+                    gender={pet.gender}
+                    age={pet.age}
+                    distance={2}/>
+                </li>
+            ))}
+          </ul>
         </div>
         <div>
-          <h2>Cats near you</h2>
+          <h2>Featured Cats</h2>
+          <ul className="card-grid">
+            {response.cats.data.map((pet,index) => (
+                  <li key={index}>
+                      <PetCard
+                      id={pet._id} 
+                      imageURL={pet.imageURL} 
+                      imageAlt="alt text goes here"
+                      name={pet.name}
+                      gender={pet.gender}
+                      age={pet.age}
+                      distance={2}/>
+                  </li>
+              ))}
+            </ul>
         </div>
       </section>
       <section>
@@ -59,4 +87,17 @@ export default function Home() {
       </section>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  let response = {};
+  let dogs = await fetch(`${process.env.BASE_URL}/api/listPets?type=dog`); // should probably limit these somehow
+  let cats = await fetch(`${process.env.BASE_URL}/api/listPets?type=cat`);
+  response.dogs = await dogs.json();
+  response.cats = await cats.json();
+  return {
+    props: {
+      response,
+    },
+  };
 }
