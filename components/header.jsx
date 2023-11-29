@@ -20,7 +20,7 @@ export default function Header () {
             <nav>
                 <ul>
                     <li><Link href="/" alt="header_home">Home</Link></li>
-                    <li><Link href="/search">Search</Link></li>
+                    <li><Link href="/search?type=dogs&city=Austin&sortBy=ASC&breed=any&age=any&size=any&gender=any">Search</Link></li>
                 </ul>
                 <ul>
                     <li><Link href="/profile">Profile</Link></li>

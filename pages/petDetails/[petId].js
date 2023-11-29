@@ -86,7 +86,7 @@ const PetDetails = ({ response }) => {
                 <div className="div">Contact</div>
                 <a className="text-wrapper-2" href="mailto:email@email.com">{response.data.shelter.emailId}</a>
             </div>
-            <Button className="favorite" size="lg" href={`mailto:${response.data.shelter.emailId}?subject=${'Adoption request for '+ response.data.shelter.name}&body=${'Hi, I would like to adopt '+ response.data.shelter.name}`}>Send an inquiry</Button>
+            <Button className="favorite" size="lg" href={""}>Send an inquiry</Button>
             </div>
         </div>
         </div>
