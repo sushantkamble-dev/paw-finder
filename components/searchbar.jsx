@@ -36,8 +36,9 @@ export default function SearchBar() {
                     <Form.Label>Choose pet type</Form.Label>
                     <Form.Select name="type" value={petType} onChange={e => setPetType(e.target.value)}
                     >
-                        <option value="cat">Cats</option>
                         <option value="dog">Dogs</option>
+                        <option value="cat">Cats</option>
+                        
                     </Form.Select>
                 </Form.Group>
                 <Form.Group as={Col} xs={7} controlId="location">
