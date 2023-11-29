@@ -6,9 +6,12 @@ import Link from "next/link";
 import SearchBar from '@/components/searchbar';
 import PetCard from '@/components/card';
 import SearchFilter from '@/components/searchfilter';
-
+import { useRouter } from 'next/router';
 export default function SearchResults ({response}) {
     console.log("response:",response)
+    const router = useRouter();
+
+    console.log(router.query)
     return (
 
         <Container className="page-wrapper">

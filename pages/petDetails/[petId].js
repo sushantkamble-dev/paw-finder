@@ -79,6 +79,10 @@ const PetDetails = ({ response }) => {
                 <p className="element-guadalupe-st">{response.data.shelter.Location}</p>
             </div>
             <div className="details-2">
+                <div className="div">Website</div>
+                <a className="text-wrapper-2" href="mailto:email@email.com">{response.data.shelter.website}</a>
+            </div>
+            <div className="details-2">
                 <div className="div">Contact</div>
                 <a className="text-wrapper-2" href="mailto:email@email.com">{response.data.shelter.emailId}</a>
             </div>

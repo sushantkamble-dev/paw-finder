@@ -25,7 +25,7 @@ export default function SearchBar() {
         params.delete(key);
         });
 
-        window.location.assign(`/search?${params.toString()}`);
+        window.location.assign(`/search?${params.toString()}&sortBy=ASC&breed=any&age=any&size=any&gender=any`);
     }
 
     return (
@@ -40,8 +40,9 @@ export default function SearchBar() {
                     </Form.Select>
                 </Form.Group>
                 <Form.Group as={Col} xs={7} controlId="location">
-                    <Form.Label>Enter city/zip</Form.Label>
+                    <Form.Label aria-required  >Enter city/zip</Form.Label>
                     <Form.Control
+                    required
                     name="city"
                     type="search"
                     placeholder="e.g., 78701 or Austin, TX"
