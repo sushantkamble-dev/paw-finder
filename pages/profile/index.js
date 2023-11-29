@@ -67,7 +67,7 @@ export default function Profile ({session}) {
             <div className="container-fluid">
                 <div className="row justify-content-center">
                     <div className="col-xs-12 col-sm-6 col-md-3">
-                        <Form className="form-container" onSubmit={handleSubmit}>
+                        <Form className="form-container mb-4" onSubmit={handleSubmit}>
                             <h1 className="text-center">Profile</h1>
                             <hr/>
                             <div className="form-group mb-2">
@@ -86,25 +86,40 @@ export default function Profile ({session}) {
                                 <label htmlFor="address">Address</label>
                                 <input id="address" name="address" className="form-control" value={form.address} onChange={(e) => updateForm({ address: e.target.value })} />
                             </div>
-                            <div className="form-group mb-2">
+                            <div className="form-group mb-3">
                                 <label htmlFor="zipcode">Zipcode</label>
                                 <input id="zipcode" name="zipcode" className="form-control" value={form.zipcode} onChange={(e) => updateForm({ zipcode: e.target.value })} />
                             </div>
                             <Button type="submit">Save changes</Button>
-                        </Form>
+                            <hr/>
+                            <Button variant="outline-primary" href="/api/auth/logout">Log out</Button>
+                        </Form>             
                     </div>
                 </div>
             </div>
         );
     } else {
         return (
-            <h1>Not logged in</h1>
+            <div className="container-fluid">
+                <div className="row justify-content-center">
+                    <h1>Not logged in</h1>
+                </div>
+            </div>
         );
     }
 }
 
 export async function getServerSideProps(context) {
     const session = await getIronSession(context.req, context.res, ironOptions);
+    if (!session.isLoggedIn) {
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+              },
+        }
+    }
+
     return {
       props: {
         session,

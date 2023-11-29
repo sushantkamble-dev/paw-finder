@@ -20,7 +20,7 @@ export default function Home({response}) {
       </section>
       <section className="near-you">
         <div>
-          <h2>Dogs near you</h2>
+          <h2>Featured Dogs</h2>
           <ul className="card-grid">
             {response.dogs.data.map((pet,index) => (
                 <li key={index}>
@@ -37,7 +37,7 @@ export default function Home({response}) {
           </ul>
         </div>
         <div>
-          <h2>Cats near you</h2>
+          <h2>Featured Cats</h2>
           <ul className="card-grid">
             {response.cats.data.map((pet,index) => (
                   <li key={index}>
