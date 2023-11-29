@@ -3,11 +3,12 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-
+import { useRouter } from 'next/router';
 export default function SearchBar() {
-
-    const [petType, setPetType] = useState("default")
-    const [location, setLocation] = useState("");
+    const router = useRouter();
+    const [petType, setPetType] = useState(router.query.type)
+    const [location, setLocation] = useState(router.query.city);
+    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -45,7 +46,7 @@ export default function SearchBar() {
                     required
                     name="city"
                     type="search"
-                    placeholder="e.g., 78701 or Austin, TX"
+                    placeholder="e.g. Austin"
                     value={location}
                     onChange={e => setLocation(e.target.value)}
                     />

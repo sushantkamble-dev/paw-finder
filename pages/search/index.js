@@ -8,10 +8,9 @@ import PetCard from '@/components/card';
 import SearchFilter from '@/components/searchfilter';
 import { useRouter } from 'next/router';
 export default function SearchResults ({response}) {
-    console.log("response:",response)
+
     const router = useRouter();
 
-    console.log(router.query)
     return (
 
         <Container className="page-wrapper">
@@ -20,9 +19,9 @@ export default function SearchResults ({response}) {
             <Row>
                 <Col md={2}>
                     {/* || Quiz link */}
-                    <QuizBannerSmall/>
+                    {/* <QuizBannerSmall/> */}
                     {/* || Filters */}
-                    <SearchFilter/>
+                    <SearchFilter queryParams={router.query}/>
                 </Col>
 
                 {/* || Results grid */}
