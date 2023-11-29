@@ -35,14 +35,14 @@ const PetDetails = ({ response }) => {
             <div className="headline">
             <div className="name">{response.data.name}</div>
             <div className="overview">
-                {response.data.type}&nbsp;&nbsp;🐾&nbsp;&nbsp;{response.data.bread}&nbsp;&nbsp;🐾&nbsp;&nbsp;Austin, TX
+                {response.data.type}&nbsp;&nbsp;🐾&nbsp;&nbsp;{response.data.breed}&nbsp;&nbsp;🐾&nbsp;&nbsp;Austin, TX
             </div>
             </div>
             <div className="about">
             <div className="text-wrapper">About</div>
             <div className="details">
                 <div className="div">Description</div>
-                <div className="text-wrapper-2">{response.data.description} years</div>
+                <div className="text-wrapper-2">{response.data.description}</div>
             </div>
             <div className="details">
                 <div className="div">Age</div>

@@ -91,10 +91,13 @@ export default function Home({response}) {
 
 export async function getServerSideProps() {
   let response = {};
-  let dogs = await fetch(`${process.env.BASE_URL}/api/listPets?type=dog`); // should probably limit these somehow
-  let cats = await fetch(`${process.env.BASE_URL}/api/listPets?type=cat`);
+  let dogs = await fetch(`${process.env.BASE_URL}/api/listPets?type=dog&city=Austin`); // should probably limit these somehow
+  let cats = await fetch(`${process.env.BASE_URL}/api/listPets?type=cat&city=Austin`);
   response.dogs = await dogs.json();
   response.cats = await cats.json();
+  response.dogs.data = response.dogs.data.slice(0,4);
+  response.cats.data = response.cats.data.slice(0,4);
+  
   return {
     props: {
       response,

@@ -520,7 +520,6 @@ padding: 2rem 8rem;
 }
 
 .info .text-wrapper-2 {
-  white-space: nowrap;
   position: relative;
   width: fit-content;
   font-family: var(--body-text-font-family);
