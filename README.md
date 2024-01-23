@@ -1,38 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Paw Finder
+
+Paw Finder is a web application built in Next.js, utilizing server-side rendering. The primary goal of Paw Finder is to connect local shelters with potential adopters by allowing shelters to post pet listings and providing location-based recommendations for adopters.
+
+## Team
+
+This project was a collaborative effort involving 2 UX designers and 2 developers.
+
+- **Developers:**
+  - Sushant Kamble
+  - Chase Rigby
+
+- **UX Designers:**
+  - Manaswee Reddy Kalluri
+  - Pranitha Vallabhaneni
+
+## Tech Stack
+
+The technology stack used for Paw Finder includes:
+
+- **Frontend:**
+  - [Next.js](https://nextjs.org/): A React framework for building server-side rendered and statically generated web applications.
+
+- **Design:**
+  - [Figma](https://www.figma.com/): A collaborative design tool for creating user interfaces, designs, and prototypes.
+
+- **Database:**
+  - [MongoDB](https://www.mongodb.com/): A NoSQL database for storing and retrieving data.
+
+
+## Deployment
+
+Paw Finder is deployed on [Netlify](https://www.netlify.com/) for the Next.js application, providing a reliable and scalable hosting solution. The database is hosted on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas), ensuring secure and managed data storage.
+
+## Live Link
+
+Visit the live Paw Finder application [here](https://main--nimble-moxie-466ca5.netlify.app/).
+
 
 ## Getting Started
 
-First, run the development server:
+To run the Paw Finder application locally, follow these steps:
 
 ```bash
+npm install
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
